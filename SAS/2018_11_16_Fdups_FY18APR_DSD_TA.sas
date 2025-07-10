@@ -47,7 +47,7 @@ options compress = yes;
 
 
 /***************************************************************************************/
-/*STEP 1: Import a country’s txt file. */
+/*STEP 1: Import a countryâ€™s txt file. */
 /***************************************************************************************/
 %let filename = 
 "\\cdc.gov\private\M133\nde7\Factview\SitexIM20171222\Site_IM_&nxt..txt";
@@ -805,12 +805,12 @@ if num_cdc_im_dsd > 1 then do;
 		/*When only CDC IMs at site for DSD*/
 		if num_ag_im_dsd in (.,0) then fdup_dsd = abs(dedup_dsd);
 		else if max_cdc_dsd >= max_ag_dsd then /*When CDC is max*/
-		 /* Fdup = ?IMCDC(i) – max{IMCDC(i)} */
+		 /* Fdup = ?IMCDC(i) â€“ max{IMCDC(i)} */
 		fdup_dsd = sum_cdc_dsd - max_cdc_dsd;
 		else if max_cdc_dsd < max_ag_dsd then do; /*When CDC !not! max*/
 			/* max(0, ?IMCDC(i) - max{IMOther(j)}) */ 
 			fdup_dsd_low = max(0,(sum_cdc_dsd - max_ag_dsd));  
-			/* ?IMCDC(i) – max{IMCDC(i)} */ 
+			/* ?IMCDC(i) â€“ max{IMCDC(i)} */ 
 			fdup_dsd_high = sum_cdc_dsd - max_cdc_dsd;
 		end;
 	end;
@@ -820,16 +820,16 @@ if num_cdc_im_dsd > 1 then do;
 		if num_ag_im_dsd in (.,0) then fdup_dsd = abs(dedup_dsd);
 		/* Multiple agencies */
 		else if num_ag_im_dsd NOT in (.,0) then do;
-			/* Fdup(high) = min{Dedup, ?IMCDC(i) – max{IMCDC(i)} */
+			/* Fdup(high) = min{Dedup, ?IMCDC(i) â€“ max{IMCDC(i)} */
 			fdup_dsd_high = min(abs(dedup_dsd), (sum_cdc_dsd - max_cdc_dsd));
 			/* For Low estimate scenarios */
 			/* When only one non-CDC IM present */
 			if num_ag_im_dsd = 1 then do;
 				if  max_cdc_dsd >= max_ag_dsd then /*When CDC is max*/
-				/* Fdup(low) = max {0, dedup – IMOther} */
+				/* Fdup(low) = max {0, dedup â€“ IMOther} */
 				fdup_dsd_low = max(0, (abs(dedup_dsd)-max_ag_dsd));
 				else if  max_cdc_dsd < max_ag_dsd  then /*When CDC is !not! max*/
-				/* Fdup(low) = max {0, dedup – min{? IMCDC(i), IMOther}} */
+				/* Fdup(low) = max {0, dedup â€“ min{? IMCDC(i), IMOther}} */
 				fdup_dsd_low = max(0, (abs(dedup_dsd)- min(sum_cdc_dsd,max_ag_dsd)));
 			end;
 			/* This very rare SCENARIO is murky, so flagging situation */
@@ -849,12 +849,12 @@ if num_cdc_im_ta > 1 then do;
 		/*When only CDC IMs at site for ta*/
 		if num_ag_im_ta in (.,0) then fdup_ta = abs(dedup_ta);
 		else if max_cdc_ta >= max_ag_ta then /*When CDC is max*/
-		 /* Fdup = ?IMCDC(i) – max{IMCDC(i)} */
+		 /* Fdup = ?IMCDC(i) â€“ max{IMCDC(i)} */
 		fdup_ta = sum_cdc_ta - max_cdc_ta;
 		else if max_cdc_ta < max_ag_ta then do; /*When CDC !not! max*/
 			/* max(0, ?IMCDC(i) - max{IMOther(j)}) */ 
 			fdup_ta_low = max(0,(sum_cdc_ta - max_ag_ta));  
-			/* ?IMCDC(i) – max{IMCDC(i)} */ 
+			/* ?IMCDC(i) â€“ max{IMCDC(i)} */ 
 			fdup_ta_high = sum_cdc_ta - max_cdc_ta;
 		end;
 	end;
@@ -864,16 +864,16 @@ if num_cdc_im_ta > 1 then do;
 		if num_ag_im_ta in (.,0) then fdup_ta = abs(dedup_ta);
 		/* Multiple agencies */
 		else if num_ag_im_ta NOT in (.,0) then do;
-			/* Fdup(high) = min{Dedup, ?IMCDC(i) – max{IMCDC(i)} */
+			/* Fdup(high) = min{Dedup, ?IMCDC(i) â€“ max{IMCDC(i)} */
 			fdup_ta_high = min(abs(dedup_ta), (sum_cdc_ta - max_cdc_ta));
 			/* For Low estimate scenarios */
 			/* When only one non-CDC IM present */
 			if num_ag_im_ta = 1 then do;
 				if  max_cdc_ta >= max_ag_ta then /*When CDC is max*/
-				/* Fdup(low) = max {0, dedup – IMOther} */
+				/* Fdup(low) = max {0, dedup â€“ IMOther} */
 				fdup_ta_low = max(0, (abs(dedup_ta)-max_ag_ta));
 				else if  max_cdc_ta < max_ag_ta  then /*When CDC is !not! max*/
-				/* Fdup(low) = max {0, dedup – min{? IMCDC(i), IMOther}} */
+				/* Fdup(low) = max {0, dedup â€“ min{? IMCDC(i), IMOther}} */
 				fdup_ta_low = max(0, (abs(dedup_ta)- min(sum_cdc_ta,max_ag_ta)));
 			end;
 			/* This very rare SCENARIO is murky, so flagging situation and assuming zero overlap */
@@ -906,12 +906,12 @@ if dedup_type_dsd in ("M","C") AND num_cdc_im_dsd > 1 then do;
 		/*When only CDC IMs at site for DSD*/
 		if num_ag_im_dsd in (.,0) then fdup_dsd_type = "S";
 		else if max_cdc_dsd >= max_ag_dsd then /*When CDC is max*/
-		 /* Fdup = ?IMCDC(i) – max{IMCDC(i)} */
+		 /* Fdup = ?IMCDC(i) â€“ max{IMCDC(i)} */
 		fdup_dsd_type = "S";
 		else if max_cdc_dsd < max_ag_dsd then do; /*When CDC !not! max*/
 			/* max(0, ?IMCDC(i) - max{IMOther(j)}) */ 
 			fdup_dsd_type = "R";  
-			/* ?IMCDC(i) – max{IMCDC(i)} */ 
+			/* ?IMCDC(i) â€“ max{IMCDC(i)} */ 
 			fdup_dsd_type = "R";
 		end;
 	end;
@@ -921,16 +921,16 @@ if dedup_type_dsd in ("M","C") AND num_cdc_im_dsd > 1 then do;
 		if num_ag_im_dsd in (.,0) then fdup_dsd_type = "S";
 		/* Multiple agencies */
 		else if num_ag_im_dsd NOT in (.,0) then do;
-			/* Fdup(high) = min{Dedup, ?IMCDC(i) – max{IMCDC(i)} */
+			/* Fdup(high) = min{Dedup, ?IMCDC(i) â€“ max{IMCDC(i)} */
 			fdup_dsd_type = "R";
 			/* For Low estimate scenarios */
 			/* When only one non-CDC IM present */
 			if num_ag_im_dsd = 1 then do;
 				if  max_cdc_dsd >= max_ag_dsd then /*When CDC is max*/
-				/* Fdup(low) = max {0, dedup – IMOther} */
+				/* Fdup(low) = max {0, dedup â€“ IMOther} */
 				fdup_dsd_type = "R";
 				else if  max_cdc_dsd < max_ag_dsd  then /*When CDC is !not! max*/
-				/* Fdup(low) = max {0, dedup – min{? IMCDC(i), IMOther}} */
+				/* Fdup(low) = max {0, dedup â€“ min{? IMCDC(i), IMOther}} */
 				fdup_dsd_type = "R";
 			end;
 			/* This SCENARIO is murky, so flagging situation */
@@ -947,12 +947,12 @@ if dedup_type_ta in ("M","C") AND num_cdc_im_ta > 1 then do;
 		/*When only CDC IMs at site for ta*/
 		if num_ag_im_ta in (.,0) then fdup_ta_type = "S";
 		else if max_cdc_ta >= max_ag_ta then /*When CDC is max*/
-		 /* Fdup = ?IMCDC(i) – max{IMCDC(i)} */
+		 /* Fdup = ?IMCDC(i) â€“ max{IMCDC(i)} */
 		fdup_ta_type = "S";
 		else if max_cdc_ta < max_ag_ta then do; /*When CDC !not! max*/
 			/* max(0, ?IMCDC(i) - max{IMOther(j)}) */ 
 			fdup_ta_type = "R";  
-			/* ?IMCDC(i) – max{IMCDC(i)} */ 
+			/* ?IMCDC(i) â€“ max{IMCDC(i)} */ 
 			fdup_ta_type = "R";
 		end;
 	end;
@@ -962,16 +962,16 @@ if dedup_type_ta in ("M","C") AND num_cdc_im_ta > 1 then do;
 		if num_ag_im_ta in (.,0) then fdup_ta_type = "S";
 		/* Multiple agencies */
 		else if num_ag_im_ta NOT in (.,0) then do;
-			/* Fdup(high) = min{Dedup, ?IMCDC(i) – max{IMCDC(i)} */
+			/* Fdup(high) = min{Dedup, ?IMCDC(i) â€“ max{IMCDC(i)} */
 			fdup_ta_type = "R";
 			/* For Low estimate scenarios */
 			/* When only one non-CDC IM present */
 			if num_ag_im_ta = 1 then do;
 				if  max_cdc_ta >= max_ag_ta then /*When CDC is max*/
-				/* Fdup(low) = max {0, dedup – IMOther} */
+				/* Fdup(low) = max {0, dedup â€“ IMOther} */
 				fdup_ta_type = "R";
 				else if  max_cdc_ta < max_ag_ta  then /*When CDC is !not! max*/
-				/* Fdup(low) = max {0, dedup – min{? IMCDC(i), IMOther}} */
+				/* Fdup(low) = max {0, dedup â€“ min{? IMCDC(i), IMOther}} */
 				fdup_ta_type = "R";
 			end;
 			/* This SCENARIO is murky, so flagging situation */

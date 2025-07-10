@@ -1,3 +1,3 @@
-# SQL scripts will go here
+# SQL scripts go here
 
 add sql folder with readme

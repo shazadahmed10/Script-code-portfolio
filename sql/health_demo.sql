@@ -3,8 +3,7 @@ CREATE TABLE patients (
     patient_id INT PRIMARY KEY,
     name VARCHAR(50),
     age INT,
-    gender CHAR(1)
-);
+    gender CHAR(1) );
 
 -- Insert sample patients
 INSERT INTO patients (patient_id, name, age, gender) VALUES
@@ -20,8 +19,7 @@ CREATE TABLE visits (
     visit_date DATE,
     diagnosis VARCHAR(100),
     bill_amount DECIMAL(10, 2),
-    FOREIGN KEY (patient_id) REFERENCES patients(patient_id)
-);
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id) );
 
 -- Insert sample visits
 INSERT INTO visits (visit_id, patient_id, visit_date, diagnosis, bill_amount) VALUES
@@ -55,3 +53,13 @@ SELECT
 FROM patients p
 JOIN visits v ON p.patient_id = v.patient_id
 GROUP BY p.name;
+
+-- Cherry-picked stat: Patient with the highest total bill
+SELECT 
+    p.name AS patient_name,
+    SUM(v.bill_amount) AS total_billed
+FROM patients p
+JOIN visits v ON p.patient_id = v.patient_id
+GROUP BY p.name
+ORDER BY total_billed DESC
+LIMIT 1;

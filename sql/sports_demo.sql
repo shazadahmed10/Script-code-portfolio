@@ -3,8 +3,7 @@ CREATE TABLE players (
     player_id INT PRIMARY KEY,
     name VARCHAR(50),
     team VARCHAR(50),
-    position VARCHAR(20)
-);
+    position VARCHAR(20));
 
 -- Insert players
 INSERT INTO players (player_id, name, team, position) VALUES
@@ -20,8 +19,7 @@ CREATE TABLE games (
     points INT,
     rebounds INT,
     assists INT,
-    FOREIGN KEY (player_id) REFERENCES players(player_id)
-);
+    FOREIGN KEY (player_id) REFERENCES players(player_id));
 
 -- Insert games
 INSERT INTO games (game_id, player_id, points, rebounds, assists) VALUES
@@ -57,3 +55,13 @@ SELECT
 FROM players p
 JOIN games g ON p.player_id = g.player_id
 GROUP BY p.name;
+
+-- Cherry-picked stat: Player with the highest total contribution
+SELECT 
+    p.name AS player_name,
+    SUM(g.points + g.rebounds + g.assists) AS total_contribution
+FROM players p
+JOIN games g ON p.player_id = g.player_id
+GROUP BY p.name
+ORDER BY total_contribution DESC
+LIMIT 1;

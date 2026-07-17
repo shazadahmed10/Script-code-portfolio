@@ -1,0 +1,7 @@
+{
+  "bundle": "t003_kp_sql_ratio",
+  "source_file": "SAS/KP site list - travis FY19 results.sas",
+  "source_blob_sha": "5e2895bc859f5f71cf899d8e72a56eaf0b0edefe",
+  "source_commit": "50f609fb599e659765154623dcc9baf28ab988c6",
+  "notes": "Ships the %kp macro (import + facility filter + KP-indicator subset + per-indicator disaggregate filter) invoked once for Rwanda, followed by the author's post-macro SQL pipeline: null-fill, empty-row delete, FY2019 filter, HTS_TST split into Total-Numerator and KeyPop streams, PROC SQL sum(cumulative) group by orgunituid on each, a BY-merge, and the kp_ratio = kp_cumulative/tn_cumulative computation with a <0.1 cutoff. The 35-operating-unit stack was reduced to the one unit invoked. infile redirected from an absolute Windows path to an inline sample built to the script's own 54-column input schema. Flow: test 48 -> test2 36 -> test3 30 -> master19 24 -> SQL-aggregated 6 sites -> master19hts3 6 with kp_ratio."
+}

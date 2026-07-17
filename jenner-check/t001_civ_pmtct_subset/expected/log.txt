@@ -1,0 +1,34 @@
+NOTE: Jenner v1.5.37 (build v1.5.37+886f95a5f1.20260717T051227Z.x86_64-unknown-linux-gnu)
+
+NOTE: Option OBS changed to 100.
+NOTE: DATA CIV
+
+NOTE: Processing inline DATALINES (23 lines)
+
+NOTE: Read 23 rows from DATALINES.
+NOTE: Wrote CIV (23 rows, 52 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA civ2
+
+
+NOTE: Read 17 rows from civ.
+NOTE: Wrote civ2 (17 rows, 52 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA civ3
+
+
+NOTE: Read 17 rows from civ2.
+NOTE: Wrote civ3 (14 rows, 41 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC EXPORT data=civ3 outfile=./CIV_PMTCT.csv
+
+NOTE: Exported 14 rows to ./CIV_PMTCT.csv.
+NOTE: PROC PRINT data=civ3
+
+NOTE: PROC PRINT completed: 14 observations printed, 41 variables

@@ -1,0 +1,7 @@
+{
+  "bundle": "t002_artcount_macro",
+  "source_file": "SAS/ART counts.sas",
+  "source_blob_sha": "eae2091ca9ef6f6295606a92f4d86550d6c78577",
+  "source_commit": "50f609fb599e659765154623dcc9baf28ab988c6",
+  "notes": "Ships the %artcount macro unchanged and invokes it once for Rwanda. The macro subsets TX_CURR & isMCAD=Y (dropping Dedup), converts 0 values to null and deletes empty rows, retains/keeps an output column order, reshapes three quarters (FY2017Q4/FY2018Q1/FY2018Q2) into long format via stacked SET, then dedups with PROC SORT nodupkey. Original infile was one absolute-path .txt per operating unit; here it reads an inline tab-delimited sample built to the macro's own input schema. Added a PROC FREQ (timeperiod, agecoarse) + PROC PRINT to make the run self-verifying. 21 rows -> 12 (where) -> 7 (empty delete) -> 21 (reshape) -> 16 (final)."
+}

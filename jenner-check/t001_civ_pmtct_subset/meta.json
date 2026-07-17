@@ -1,0 +1,7 @@
+{
+  "bundle": "t001_civ_pmtct_subset",
+  "source_file": "SAS/CIV pmtct request.sas",
+  "source_blob_sha": "9d7c55446cf871b365b7a09d0ba302cebff5f2f8",
+  "source_commit": "50f609fb599e659765154623dcc9baf28ab988c6",
+  "notes": "Imports a PEPFAR MER Structured Dataset (tab-delimited site-level extract), subsets to TX_NEW / HTS_TST_POS / PMTCT* indicators, drops UID/geography columns and all-empty rows, exports the subset. The original infile pointed at an absolute Windows path; here it reads an inline tab-delimited sample built to the script's own informat/input schema (52 cols: 43 char + 9 FY numeric). The where/substr subset and empty-row delete logic are the author's, unchanged. proc export retargeted to a relative CSV. 23 rows in -> 17 after indicator filter -> 14 after empty-row delete."
+}

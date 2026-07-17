@@ -1,0 +1,15 @@
+{
+  "_captured_at": "2026-07-17T10:30:00Z",
+  "_captured_run_id": "r_8f8847b66fd142df972cb1b4de10701c",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "Wrote Rwanda_1 (12 rows, 52 columns).",
+    "Wrote Rwanda_3 (7 rows, 46 columns).",
+    "Wrote Rwanda (16 rows, 18 columns).",
+    "7 dataset(s) deleted.",
+    "PROC PRINT completed: 16 observations printed, 18 variables"
+  ],
+  "log_does_not_contain": ["ERROR:", "[JENNER-ERROR"],
+  "diagnostics": {"parse_warnings": [], "runtime_warnings": []}
+}

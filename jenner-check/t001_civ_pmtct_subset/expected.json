@@ -1,0 +1,15 @@
+{
+  "_captured_at": "2026-07-17T10:25:00Z",
+  "_captured_run_id": "r_850f1b065a9447edbdcdafdc82e78811",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "Wrote CIV (23 rows, 52 columns).",
+    "Wrote civ2 (17 rows, 52 columns).",
+    "Wrote civ3 (14 rows, 41 columns).",
+    "Exported 14 rows to ./CIV_PMTCT.csv.",
+    "PROC PRINT completed: 14 observations printed, 41 variables"
+  ],
+  "log_does_not_contain": ["ERROR:", "[JENNER-ERROR"],
+  "diagnostics": {"parse_warnings": [], "runtime_warnings": []}
+}

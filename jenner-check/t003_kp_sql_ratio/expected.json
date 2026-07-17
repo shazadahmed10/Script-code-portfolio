@@ -1,0 +1,15 @@
+{
+  "_captured_at": "2026-07-17T10:36:00Z",
+  "_captured_run_id": "r_4f5ea48e683e4e6fb456290c8f21bb5e",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "Wrote test2 (36 rows, 20 columns).",
+    "Wrote test3 (30 rows, 20 columns).",
+    "Wrote master19hts_kp (6 rows, 6 columns).",
+    "Wrote master19hts3 (6 rows, 8 columns).",
+    "PROC PRINT completed: 6 observations printed, 8 variables"
+  ],
+  "log_does_not_contain": ["ERROR:", "[JENNER-ERROR"],
+  "diagnostics": {"parse_warnings": [], "runtime_warnings": []}
+}
